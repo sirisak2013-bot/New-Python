@@ -1,0 +1,9 @@
+[server]
+port = 80
+address = "127.0.0.1"
+
+# หากทำคู่กับระบบ SSL (HTTPS) ในอนาคต สามารถเปิดสี่บรรทัดล่างนี้เพิ่มได้เลยครับ
+# port = 443
+# address = "127.0.0.1"
+# sslCertFile = "cert.pem"
+# sslKeyFile = "key.pem"
