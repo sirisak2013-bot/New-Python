@@ -1,6 +1,6 @@
 [server]
 port = 80
-address = "127.0.0.1"
+address = "jas.tisi.go.th"
 
 # หากทำคู่กับระบบ SSL (HTTPS) ในอนาคต สามารถเปิดสี่บรรทัดล่างนี้เพิ่มได้เลยครับ
 # port = 443
