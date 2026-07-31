@@ -2,8 +2,20 @@ import streamlit as st
 import pandas as pd
 import os
 
+from styles import CARD_CSS, panel_header
+
+st.html(CARD_CSS)
+
 # 4. ส่วนจัดการไฟล์ Excel (แบ่งสัดส่วน ซ้าย-ขวา ชัดเจนด้วย Card Borders)
-st.markdown("### 📂 จัดการข้อมูลผ่านไฟล์ Excel")
+st.markdown(
+    panel_header(
+        "📂",
+        "จัดการข้อมูลผ่านไฟล์ Excel",
+        "ดาวน์โหลด Template หรืออัปโหลดไฟล์เพื่อนำเข้าข้อมูลเข้าสู่ระบบ",
+        "#f59e0b",
+    ),
+    unsafe_allow_html=True,
+)
 
 col_dl, col_ul = st.columns(2, gap="medium")
 
@@ -26,7 +38,7 @@ with col_dl:
                 data=template_bytes,
                 file_name="import_template.xlsx",
                 mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-                use_container_width=True
+                width="stretch"
             )
         except FileNotFoundError:
             st.warning("⚠️ ไม่พบไฟล์ Template ในโฟลเดอร์ assets/template.xlsx")
@@ -51,11 +63,11 @@ if uploaded_file is not None:
             st.success(f"อ่านไฟล์สำเร็จ! (พบข้อมูลทั้งหมด {df.shape[0]} แถว, {df.shape[1]} คอลัมน์)")
             
             # แสดงตารางแบบปรับความกว้างอัตโนมัติ
-            st.dataframe(df.head(10), use_container_width=True)
-            
+            st.dataframe(df.head(10), width="stretch")
+
             col_btn1, col_btn2 = st.columns([1, 4])
             with col_btn1:
-                if st.button("🚀 ยืนยันบันทึก", type="primary", use_container_width=True):
+                if st.button("🚀 ยืนยันบันทึก", type="primary", width="stretch"):
                     st.success("🎉 บันทึกข้อมูลลง Database สำเร็จ!")
         except Exception as e:
             st.error(f"❌ เกิดข้อผิดพลาดในการอ่านไฟล์: {e}")

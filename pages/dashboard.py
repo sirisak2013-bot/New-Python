@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
 
+from styles import CARD_CSS, stat_card
+
 # ตั้งค่าหน้าเว็บ
 st.set_page_config(
     page_title="Dashboard - Intranet Portal",
@@ -16,6 +18,8 @@ def render_dashboard():
             st.switch_page("app.py")
         return
 
+    st.html(CARD_CSS)
+
     # 2. Header พร้อมตกแต่งด้วย Container และไอคอนเด่นชัด
     with st.container():
         st.title("📊 แดชบอร์ดผู้ดูแลระบบ")
@@ -23,15 +27,18 @@ def render_dashboard():
 
     st.markdown("---")
 
-    # 3. แสดงผลสถิติด้วย Metric แบบจัดกลุ่มใน Container เดียวกัน
+    # 3. แสดงผลสถิติด้วย Stat Card
     st.markdown("### 📈 ภาพรวมระบบ (System Metrics)")
-    metric_col1, metric_col2, metric_col3 = st.columns(3)
-    with metric_col1:
-        st.metric(label="สถานะระบบ", value="Active", delta="Normal")
-    with metric_col2:
-        st.metric(label="ผู้ใช้งานออนไลน์", value="1 คน", delta="Secure Session")
-    with metric_col3:
-        st.metric(label="การเชื่อมต่อ API", value="Connected", delta="100%")
+    st.markdown(
+        f"""
+        <div class="tw-grid">
+            {stat_card("สถานะระบบ", "Active", "Normal", "#10b981")}
+            {stat_card("ผู้ใช้งานออนไลน์", "1 คน", "Secure Session", "#3b82f6")}
+            {stat_card("การเชื่อมต่อ API", "Connected", "100%", "#8b5cf6")}
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
 
     st.markdown("---")
 

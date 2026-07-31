@@ -4,6 +4,8 @@ from dotenv import load_dotenv
 import os
 import streamlit as st
 
+from styles import CARD_CSS, panel_header
+
 # กำหนดค่าการเชื่อมต่อ MySQL (ปรับเปลี่ยนข้อมูลให้ตรงกับ Server ของคุณ)
 load_dotenv()
 
@@ -31,7 +33,17 @@ def get_mysql_connection():
         return None
 
 # --- ส่วนของ UI ใน Streamlit ---
-st.title("🔌 ทดสอบการเชื่อมต่อ MySQL")
+st.html(CARD_CSS)
+
+st.markdown(
+    panel_header(
+        "🔌",
+        "ทดสอบการเชื่อมต่อ MySQL",
+        "ตรวจสอบว่าเซิร์ฟเวอร์สามารถเชื่อมต่อฐานข้อมูลได้ปกติหรือไม่",
+        "#0ea5e9",
+    ),
+    unsafe_allow_html=True,
+)
 
 if st.button("คลิกเพื่อทดสอบเชื่อมต่อ Database"):
   # เรียกใช้งานฟังก์ชัน
