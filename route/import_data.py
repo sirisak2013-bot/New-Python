@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import os
 
-from styles import CARD_CSS, panel_header
+from CSS.styles import CARD_CSS, panel_header
 
 st.html(CARD_CSS)
 
@@ -82,9 +82,3 @@ with st.expander("🛠️ เมนูขั้นสูง & ข้อมูล
         st.info("ไม่พบข้อมูลดิบของ Session")
     
     st.markdown("")
-    if st.button("🚪 ออกจากระบบ (Logout)", type="secondary"):
-        st.session_state.is_authenticated = False
-        st.session_state.user_info = None
-        st.query_params.clear()
-        st.success("ออกจากระบบสำเร็จ กำลังพาคุณกลับสู่หน้าแรก...")
-        st.switch_page("app.py")

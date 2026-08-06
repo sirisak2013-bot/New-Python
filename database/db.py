@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 import os
 import streamlit as st
 
-from styles import CARD_CSS, panel_header
+from CSS.styles import CARD_CSS, panel_header
 
 # กำหนดค่าการเชื่อมต่อ MySQL (ปรับเปลี่ยนข้อมูลให้ตรงกับ Server ของคุณ)
 load_dotenv()

@@ -1,6 +1,6 @@
 import streamlit as st
 
-from styles import CARD_CSS
+from CSS.styles import CARD_CSS
 
 # ตั้งค่าหน้าเว็บหลัก
 st.set_page_config(page_title="Intranet Portal", page_icon="🏠", layout="wide")

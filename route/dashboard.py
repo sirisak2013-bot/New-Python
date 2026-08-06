@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 
-from styles import CARD_CSS, stat_card
+from CSS.styles import CARD_CSS, stat_card
 
 # ตั้งค่าหน้าเว็บ
 st.set_page_config(
@@ -15,7 +15,7 @@ def render_dashboard():
     if "is_authenticated" not in st.session_state or not st.session_state.is_authenticated:
         st.error("⛔ คุณไม่มีสิทธิ์เข้าถึงหน้านี้ กรุณาเข้าสู่ระบบผ่านหน้าแรกก่อน")
         if st.button("🔑 กลับไปหน้า Login / Home"):
-            st.switch_page("app.py")
+            st.rerun()
         return
 
     st.html(CARD_CSS)
